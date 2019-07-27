@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class SimpleFragment extends Fragment {
@@ -56,7 +57,9 @@ public class SimpleFragment extends Fragment {
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                
+                String myRating = (getString(R.string.my_rating) + String.valueOf(ratingBar.getRating()));
+                Toast.makeText(getContext(), myRating,
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
