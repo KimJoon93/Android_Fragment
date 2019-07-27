@@ -33,6 +33,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView"/>
 
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.example.fragment.SimpleFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_simple" />
+
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
