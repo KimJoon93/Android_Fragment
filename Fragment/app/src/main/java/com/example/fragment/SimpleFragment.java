@@ -66,4 +66,8 @@ public class SimpleFragment extends Fragment {
         return rootView;
     }
 
+    public static SimpleFragment newInstance() {
+        return new SimpleFragment();
+    }
+
 }
