@@ -51,11 +51,11 @@ public class MainActivity extends AppCompatActivity implements SimpleFragment.On
     }
 
     public void displayFragment() {
-        SimpleFragment simpleFragment = SimpleFragment.newInstance();
+        SimpleFragment fragment = SimpleFragment.newInstance(mRadioButtonChoice);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.add(R.id.fragment_container, simpleFragment).addToBackStack(null).commit();
+        fragmentTransaction.add(R.id.fragment_container, fragment).addToBackStack(null).commit();
         mButton.setText(R.string.close);
         isFragmentDisplayed = true;
     }
