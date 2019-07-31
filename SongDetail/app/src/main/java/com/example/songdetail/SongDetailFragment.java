@@ -24,11 +24,12 @@ public class SongDetailFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments().containsKey(SongUtils.SONG_ID_KEY)) {
             // Load the content specified by the fragment arguments.
-            mSong = SongUtils.SONG_ITEMS.get(getArguments().getInt(SongUtils.SONG_ID_KEY));
+            mSong = SongUtils.SONG_ITEMS.get(getArguments()
+                    .getInt(SongUtils.SONG_ID_KEY));
         }
     }
 

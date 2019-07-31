@@ -38,18 +38,21 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity {
 
-    /**
-     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
-     * device.
-     */
+    // Default layout is one pane, not two.
+    private boolean mTwoPane = false;
 
     /**
-     * Sets up a song list as a RecyclerView.
+     * Sets up a song list as a RecyclerView, and determines
+     * whether the screen is wide enough for two-pane mode.
+     * The song_detail_container view for MainActivity will be
+     * present only if the screen's width is 900dp or larger,
+     * because it is defined only in the "song_list.xml (w900dp).xml"
+     * layout, not in the default "song_list.xml" layout for smaller
+     * screen sizes. If this view is present, then the activity
+     * should be in two-pane mode.
      *
      * @param savedInstanceState
      */
-
-    private boolean mTwoPane = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
