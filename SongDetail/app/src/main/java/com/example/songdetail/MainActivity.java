@@ -48,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param savedInstanceState
      */
+
+    private boolean mTwoPane = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.song_list);
         recyclerView.setAdapter
                 (new SimpleItemRecyclerViewAdapter(SongUtils.SONG_ITEMS));
+
+        if (findViewById(R.id.song_detail_container) != null) {
+            mTwoPane = true;
+        }
     }
 
     /**
