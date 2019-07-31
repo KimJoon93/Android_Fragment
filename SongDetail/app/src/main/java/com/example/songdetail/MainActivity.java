@@ -27,7 +27,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-import com.example.songdetail.Content.SongUtils;
+import com.example.songdetail.content.SongUtils;
 
 import java.util.List;
 
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter
                 (new SimpleItemRecyclerViewAdapter(SongUtils.SONG_ITEMS));
 
+        // Is the container layout available? If so, set mTwoPane to true.
         if (findViewById(R.id.song_detail_container) != null) {
             mTwoPane = true;
         }
@@ -115,19 +116,34 @@ public class MainActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context,
-                            SongDetailActivity.class);
-                    intent.putExtra(SongUtils.SONG_ID_KEY,
-                            holder.getAdapterPosition());
-                    context.startActivity(intent);
+                    if (mTwoPane) {
+                        // Get selected song position in song list.
+                        int selectedSong = holder.getAdapterPosition();
+                        // Create new instance of fragment and add it to
+                        // the activity using a fragment transaction.
+                        SongDetailFragment fragment =
+                                SongDetailFragment.newInstance(selectedSong);
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.song_detail_container, fragment)
+                                .addToBackStack(null)
+                                .commit();
+                    } else {
+                        // Send an intent to the SongDetailActivity
+                        // with intent extra of the selected song position.
+                        Context context = v.getContext();
+                        Intent intent = new Intent(context,
+                                SongDetailActivity.class);
+                        intent.putExtra(SongUtils.SONG_ID_KEY,
+                                holder.getAdapterPosition());
+                        context.startActivity(intent);
+                    }
                 }
             });
         }
 
         /**
          * Get the count of song list items.
-         * @return
+         * @return Integer count
          */
         @Override
         public int getItemCount() {

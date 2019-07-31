@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.songdetail.Content;
+package com.example.songdetail.content;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +61,12 @@ public class SongUtils {
         }
     }
 
+    /**
+     * Manually creates each song title and song detail.
+     *
+     * @param position Position of the song in the list.
+     * @return
+     */
     private static Song createSongAtPosition(int position) {
         String newTitle;
         String newDetail;
